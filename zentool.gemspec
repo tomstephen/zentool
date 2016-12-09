@@ -7,7 +7,7 @@ Gem::Specification.new do |spec|
   spec.name          = "zentool"
   spec.version       = Zentool::VERSION
   spec.authors       = ["Tom Stephen", "Adrian Smith"]
-  spec.email         = ["tom.stephen@me.com"]
+  spec.email         = ["tom.stephen@me.com", "adrian.smith@ennova.com.au"]
 
   spec.summary       = %q{Tool to interface with Zendesk}
   spec.description   = %q{Tool to interface with Zendesk}
