@@ -2,7 +2,7 @@
 
 class Zendesk
   def initialize
-    @root_uri = 'https://envisionapp.zendesk.com/api/v2/help_center/en-us/'
+    @root_uri = $zendesk_url
     @articles_uri = @root_uri + 'articles.json'
     @sections_uri = @root_uri + 'sections.json'
     @categories_uri = @root_uri + 'categories.json'

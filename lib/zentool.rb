@@ -20,6 +20,9 @@ system 'clear'
 puts 'Envision Zendesk Articles'
 puts '--------------------------'
 
+print 'Zendesk URL: '
+$zendesk_url = gets.chomp
+puts
 # get username and password for Zendesk
 print 'Username: '
 $zendesk_username = gets.chomp
