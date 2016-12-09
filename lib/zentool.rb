@@ -8,7 +8,7 @@ require 'io/console'
 require 'uri'
 require 'ruby-graphviz'
 
-require_relative 'zentool/zendesk.rb'
+require_relative 'zentool/zendesk_article.rb'
 require_relative 'zentool/graph.rb'
 
 
@@ -31,22 +31,22 @@ $zendesk_password = STDIN.noecho(&:gets).chomp
 puts
 puts
 
-zendesk = Zendesk.new
+zendesk = ZendeskArticle.new
 
 puts '-> Retrieving Categories'
-zendesk = Zendesk.new
+zendesk = ZendeskArticle.new
 categories = Hash[zendesk.categories.collect { |s| [s['id'], s] }]
 $categories_g = categories
 puts
 
 puts '-> Retrieving Sections'
-zendesk = Zendesk.new
+zendesk = ZendeskArticle.new
 sections = Hash[zendesk.sections.collect { |s| [s['id'], s] }]
 $sections_g = sections
 puts
 
 puts '-> Retrieving Articles'
-zendesk = Zendesk.new
+zendesk = ZendeskArticle.new
 articles = zendesk.articles
 $articles_g = articles
 puts
