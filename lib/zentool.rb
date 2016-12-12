@@ -1,4 +1,3 @@
-require "zentool/version"
 require 'nokogiri'
 require 'active_support/all'
 require 'httparty'
@@ -8,6 +7,7 @@ require 'io/console'
 require 'uri'
 require 'ruby-graphviz'
 
+require "zentool/version"
 require_relative 'zentool/zendesk_article.rb'
 require_relative 'zentool/graph.rb'
 
