@@ -41,17 +41,17 @@ def wrap(s, width = 20)
   s.gsub(/(.{1,#{width}})(\s+|\Z)/, "\\1\n")
 end
 
-if options[:url] == NilClass
+if options[:url] == NilClass || !options.key?(:url)
   print 'Zendesk URL: '
   options[:url] = gets.chomp
   puts
 end
-if options[:username] == NilClass
+if options[:username] == NilClass || !options.key?(:username)
   print 'Zendesk username: '
   options[:username] = gets.chomp
   puts
 end
-if options[:password] == NilClass
+if options[:password] == NilClass || !options.key?(:password)
   print 'Zendesk password: '
   options[:password] = STDIN.noecho(&:gets).chomp
   puts

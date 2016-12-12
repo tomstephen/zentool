@@ -8,6 +8,7 @@ require 'pry'
 require 'io/console'
 require 'uri'
 require 'ruby-graphviz'
+require 'optparse'
 
 # Specify your gem's dependencies in zentool.gemspec
 gemspec
