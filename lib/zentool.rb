@@ -6,30 +6,65 @@ require 'pry'
 require 'io/console'
 require 'uri'
 require 'ruby-graphviz'
+require 'optparse'
 
 require "zentool/version"
 require_relative 'zentool/zendesk_article.rb'
 require_relative 'zentool/graph.rb'
+
+options = {}
+
+OptionParser.new do |parser|
+  parser.banner = "Usage: zentool [options]"
+
+  parser.on("-h", "--help", "Show this help message") do ||
+    puts parser
+  end
+
+  parser.on("-u", "--username USERNAME", "The username for the Zendesk.") do |v|
+    options[:username] = v
+  end
+
+  parser.on("-p", "--password PASSWORD", "The password for the Zendesk.") do |v|
+    options[:password] = v
+  end
+
+  parser.on("-l", "--link LINK", "The Zendesk URL.") do |v|
+    options[:url] = v
+  end
+end.parse!
+
+# Now we can use the options hash however we like.
 
 
 def wrap(s, width = 20)
   s.gsub(/(.{1,#{width}})(\s+|\Z)/, "\\1\n")
 end
 
-system 'clear'
+if options[:url] == NilClass
+  print 'Zendesk URL: '
+  options[:url] = gets.chomp
+  puts
+end
+if options[:username] == NilClass
+  print 'Zendesk username: '
+  options[:username] = gets.chomp
+  puts
+end
+if options[:password] == NilClass
+  print 'Zendesk password: '
+  options[:password] = STDIN.noecho(&:gets).chomp
+  puts
+end
+
+puts
+
+$zendesk_url = options[:url]
+$zendesk_username = options[:username]
+$zendesk_password = options[:password]
+
 puts 'Envision Zendesk Articles'
 puts '--------------------------'
-
-print 'Zendesk URL: '
-$zendesk_url = gets.chomp
-puts
-# get username and password for Zendesk
-print 'Username: '
-$zendesk_username = gets.chomp
-print 'Password: '
-$zendesk_password = STDIN.noecho(&:gets).chomp
-puts
-puts
 
 zendesk = ZendeskArticle.new
 
